@@ -6,12 +6,7 @@ namespace Enyedi_Stefan_Lab8.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "PublisherID",
-                table: "Book",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
+            
 
             migrationBuilder.CreateTable(
                 name: "Category",
@@ -26,18 +21,7 @@ namespace Enyedi_Stefan_Lab8.Migrations
                     table.PrimaryKey("PK_Category", x => x.ID);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Publisher",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PublisherName = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Publisher", x => x.ID);
-                });
+      
 
             migrationBuilder.CreateTable(
                 name: "BookCategory",
@@ -65,10 +49,7 @@ namespace Enyedi_Stefan_Lab8.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Book_PublisherID",
-                table: "Book",
-                column: "PublisherID");
+            
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookCategory_BookID",
@@ -80,13 +61,7 @@ namespace Enyedi_Stefan_Lab8.Migrations
                 table: "BookCategory",
                 column: "CategoryID");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Book_Publisher_PublisherID",
-                table: "Book",
-                column: "PublisherID",
-                principalTable: "Publisher",
-                principalColumn: "ID",
-                onDelete: ReferentialAction.Cascade);
+            
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
